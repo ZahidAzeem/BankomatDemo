@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BankomatDemo
+namespace AutomatBankDemo
 {
     class Program
     {
