@@ -6,5 +6,6 @@ namespace AutomatBankDemo
 {
     class Balace
     {
+
     }
 }
