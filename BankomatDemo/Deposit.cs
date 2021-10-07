@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutomatBankDemo
 {
-    class Deposit
+    public class Deposit 
     {
 
     }
