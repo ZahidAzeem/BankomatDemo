@@ -6,5 +6,6 @@ namespace AutomatBankDemo
 {
    public class Withdraw
     {
+        // withdraw function should be here
     }
 }

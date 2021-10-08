@@ -6,6 +6,6 @@ namespace AutomatBankDemo
 {
     public class Deposit 
     {
-
+        // Deposit function should be here.
     }
 }
