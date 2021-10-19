@@ -19,13 +19,14 @@ namespace AutomatBankDemo
 
                 if (true)
                 {
-                    Console.WriteLine("Account balance is " + balance.CurrentBalance.ToString()); 
+                    Console.WriteLine("Account balance is " + balance.CurrentBalance.ToString());
+                    Console.WriteLine("Vill du kolla konto saldo, Tryck 'S'");
                     Console.WriteLine("Vill du forsätta använda kontot, Tryck 'Y'?");
-                    Console.WriteLine("Eller");
                     Console.WriteLine("Tryck 'X' för att stäng kontot!");
 
-                    // input control require **
+                    // 
                     string FLAG = Console.ReadLine();
+
                     if (FLAG == "X"|| FLAG == "x")
                     {
                         closeFlag = false;
@@ -34,10 +35,15 @@ namespace AutomatBankDemo
                     {
                         balance.CheckBalance();
                     }
+                    else if (FLAG == "s" || FLAG == "S")
+                    {
+                        Account.AccountDetailsOut();
+                    }
                     else
                     {
-                        Console.WriteLine("\nVänligen välja 'Y' eller 'X' ");
+                        Console.WriteLine("\nVänligen välja rätt val");
                     }
+                   
                 }
             }
             /*

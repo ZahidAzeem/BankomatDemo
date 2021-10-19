@@ -6,6 +6,11 @@ namespace AutomatBankDemo
 {
    public class Withdraw
     {
-        // withdraw function should be here
+        // withdraw function måste vara här
+        public static void WithdrawHistory()
+        {
+            // uttag funtion
+        }
+
     }
 }

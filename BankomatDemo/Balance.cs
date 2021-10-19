@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace AutomatBankDemo
 {
@@ -34,6 +35,8 @@ namespace AutomatBankDemo
             {
                 Console.WriteLine("Vänligen ange sifror 1 - 9 ");
             }
+
+            Deposit.KontoSaldo(CurrentBalance);
 
             return CurrentBalance;
         }
