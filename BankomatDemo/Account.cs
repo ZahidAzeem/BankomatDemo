@@ -3,52 +3,42 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace AutomatBankDemo
+namespace BankomatDemo
 {
     public class Account
     {
-        string Name;
-        int Age;
+
+        static string  username = Environment.UserName.ToString();
+        string path = @"C:\Users\" + username + @"\Documents\";
+
+        string name, bankName, doBirth;
         public double CurrentBalance;
 
         DateTime dateTime =DateTime.Now;
         public void AccountCreate()
         {
-            Console.Write("Vänlingen anger ditt namn: ");
-            Name = Console.ReadLine();
-            Console.Write("Vänligen anger ditt födelseår: ");
-            Age = Int32.Parse(Console.ReadLine());
-            string path = @"C:\Users\Admin\source\repos\BankomatDemo\BankomatDemo\bin\Debug\netcoreapp3.1\";
+            Console.Write("Vänligen skriv in ditt Bank namn: ");
+            bankName = Console.ReadLine();
+            Console.Write("Vänlingen skriv in ditt namn: ");
+            name = Console.ReadLine();
+            Console.Write("Vänligen skriv in ditt Födelsedatum: ");
+            doBirth = Console.ReadLine();
+
             using (StreamWriter streamWriter = File.CreateText(path + "AccountDetails.txt"))
             {
-                streamWriter.WriteLine(); 
-                streamWriter.WriteLine("Ditt namn: "+Name);
-                streamWriter.WriteLine("Födelseår: "+Age);
+                streamWriter.WriteLine();
+                streamWriter.WriteLine("Bank namn: " + bankName);
+                streamWriter.WriteLine("Ditt namn: " + name);
+                streamWriter.WriteLine("Födelsedatum: " + doBirth);
+
             }
 
         }
-        public void AccountInfo(string name,int age, double amount)
-        {
-            Name = name;
-            Age = age;
-            CurrentBalance = amount;
-        }
-        public static void AccountHistory()
-        {
-            // funktion för konto historisk
-        }
-        // konto detalj funktion
-        public static void AccountDetailsOut()
-        {
-            string saldo;
-            // väg kanske ändra till @c:\ 
-            string path = @"C:\Users\Admin\source\repos\BankomatDemo\BankomatDemo\bin\Debug\netcoreapp3.1\";
 
-            using (StreamReader saldoReader=File.OpenText(path + "Saldo.txt"))
-                {
-                saldo = saldoReader.ReadLine();
-                }
-
+        // konto saldo hantering funktion
+        public void AccountDetails()
+        {
+           
             string line = "";
             using (StreamReader sr = new StreamReader(path + "AccountDetails.txt"))
             {
@@ -56,7 +46,6 @@ namespace AutomatBankDemo
                 {
                     Console.WriteLine(line);
                 }
-                Console.WriteLine("Kontot saldo är: " + saldo);
             }
         }
     }

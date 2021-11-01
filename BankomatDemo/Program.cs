@@ -1,28 +1,32 @@
 ﻿using System;
 
-namespace AutomatBankDemo
+namespace BankomatDemo
 {
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("*** Välkommen till Automat Bank ***");
-            // create user 
+            // skapa konto
+
             Account account = new Account();
             account.AccountCreate();
             Balance balance = new Balance();
+            TransactionDetail transaction = new TransactionDetail();
 
-            // user press 'X'
+            // användaren ska tryck 'X' att stänga program
             bool closeFlag = true;
             while (closeFlag)
             {
 
                 if (true)
                 {
-                    Console.WriteLine("Account balance is " + balance.CurrentBalance.ToString());
-                    Console.WriteLine("Vill du kolla konto saldo, Tryck 'S'");
-                    Console.WriteLine("Vill du forsätta använda kontot, Tryck 'Y'?");
-                    Console.WriteLine("Tryck 'X' för att stäng kontot!");
+                    Console.WriteLine("Kontot saldo är:  " + balance.CurrentBalance.ToString());
+                    Console.WriteLine("Konto Saldo, Tryck 'S'");
+                    Console.WriteLine("Insättning eller Uttrag, Tryck 'Y'");
+                    Console.WriteLine("Transaktioner detaljer, Tryck 'T'");
+
+                    Console.WriteLine("Logga-ut/stäng kontot Tryck 'X'");
 
                     // 
                     string FLAG = Console.ReadLine();
@@ -37,8 +41,13 @@ namespace AutomatBankDemo
                     }
                     else if (FLAG == "s" || FLAG == "S")
                     {
-                        Account.AccountDetailsOut();
+                        account.AccountDetails();
                     }
+                    else if (FLAG == "t" || FLAG == "T")
+                    {
+                        TransactionDetail.AccountTransactionDetail();
+                    }
+
                     else
                     {
                         Console.WriteLine("\nVänligen välja rätt val");

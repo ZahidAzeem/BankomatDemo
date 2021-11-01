@@ -3,33 +3,52 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace AutomatBankDemo
+namespace BankomatDemo
 {
     public class Balance : Account
     {
-        double deduct, newAmount;
+        double deposit, deduct;
         public double CheckBalance()
         {
-            Console.WriteLine("Vill du göra insättning, tryck 'Y'");
+            Console.WriteLine("Vill du göra Insättning, tryck 'I'");
             Console.WriteLine("Eller");
-            Console.WriteLine("vill du göra uttag, tryck 'U'");
+            Console.WriteLine("vill du göra Uttag, tryck 'U'");
             string FLAG = Console.ReadLine();
 
-            if (FLAG=="Y"|| FLAG=="y")
+            if (FLAG=="i"|| FLAG=="I") // konto insättning
             {
-                Console.Write("Vänligen ange belopp: ");
-                string input = Console.ReadLine();
-                newAmount = double.Parse(input);
-                CurrentBalance += newAmount;
-                //Console.WriteLine("Current balace is: "+CurrentBalance);
+
+                    Console.Write("Vänligen ange belopp: ");
+                    string input = Console.ReadLine();
+                    deposit = double.Parse(input);
+
+                    if (deposit <= 1000)
+                    {
+                        TransactionDetail.DepositTransactionDetails(deposit);
+                        CurrentBalance += deposit;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n-- INFO -- Max Insättning per gång 1000 kr!");
+                    }
+
             } 
-            else if (FLAG == "U" || FLAG == "u")
+            else if (FLAG == "U" || FLAG == "u") // konto uttdrag Detaljer
             {
-                Console.Write("Vänligen ange belopp: ");
-                string input = Console.ReadLine();
-                deduct = double.Parse(input);
-                CurrentBalance -= deduct;
-                //Console.WriteLine("Current balace is: " + CurrentBalance);
+                
+                    Console.Write("Vänligen ange belopp: ");
+                    string input = Console.ReadLine();
+                    deduct = double.Parse(input);
+                    
+                if (deduct <= CurrentBalance && deduct <= 1000)
+                    {
+                        TransactionDetail.WithDrawTransactionDetails(deduct);
+                        CurrentBalance -= deduct;
+                    }
+                    else
+                    {
+                        Console.WriteLine("--INFO-- Saldo är mindre än uttag!");
+                    }
             }
             else
             {
